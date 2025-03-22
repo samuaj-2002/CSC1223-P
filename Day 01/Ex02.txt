@@ -1,0 +1,43 @@
+MariaDB [UOV]>  create table Physician(PhysicianId CHAR(5),Name VARCHAR(20),Position VARCHAR(30));
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [UOV]>  DESC Physician;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| PhysicianId | char(5)     | YES  |     | NULL    |       |
+| Name        | varchar(20) | YES  |     | NULL    |       |
+| Position    | varchar(30) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.038 sec)
+
+MariaDB [UOV]> INSERT INTO Physician VALUES('1','John Dorian','Staff Internist');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [UOV]> select * from Physician;
++-------------+-------------+-----------------+
+| PhysicianId | Name        | Position        |
++-------------+-------------+-----------------+
+| 1           | John Dorian | Staff Internist |
++-------------+-------------+-----------------+
+1 row in set (0.002 sec)
+
+MariaDB [UOV]> INSERT INTO Physician VALUES('2','Elliot Reid','Attending Physician'),('3','Christopher Turk','Surgical Attending Physicin'),('4','Percival Cox','Senior Attending Physician'),('5','Keith Dudemeister','MID Resident'),('6','Molly Clock','Attending Psychiatrist');
+Query OK, 5 rows affected (0.004 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]> select * from Physician;
++-------------+-------------------+-----------------------------+
+| PhysicianId | Name              | Position                    |
++-------------+-------------------+-----------------------------+
+| 1           | John Dorian       | Staff Internist             |
+| 2           | Elliot Reid       | Attending Physician         |
+| 3           | Christopher Turk  | Surgical Attending Physicin |
+| 4           | Percival Cox      | Senior Attending Physician  |
+| 5           | Keith Dudemeister | MID Resident                |
+| 6           | Molly Clock       | Attending Psychiatrist      |
++-------------+-------------------+-----------------------------+
+6 rows in set (0.002 sec)
+
+
+Conclusion : We studied how to create a database 
