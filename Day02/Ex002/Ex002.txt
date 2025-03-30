@@ -1,0 +1,35 @@
+MariaDB [UOV]> create table STUDENTS(id INT PRIMARY KEY,name VARCHAR(30),age INT,grade VARCHAR(3),city VARCHAR(30));
+ERROR 1050 (42S01): Table 'students' already exists
+MariaDB [UOV]> create table STUDENT(id INT PRIMARY KEY,name VARCHAR(30),age INT,grade VARCHAR(3),city VARCHAR(30));
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [UOV]> DESC STUDENT;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
+| grade | varchar(3)  | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.033 sec)MariaDB [hospital]> LOAD DATA LOCAL INFILE'C:/Users/DELL/Desktop/Database Day02/Ex002/DATA.csv'
+    -> INTO TABLE STUDENT
+    -> FIELDS TERMINATED BY ','
+    -> LINES TERMINATED BY '\n'
+    -> (id,name,age,grade,city);
+Query OK, 6 rows affected (0.017 sec)
+Records: 6  Deleted: 0  Skipped: 0  Warnings: 0
+
+MariaDB [UOV]> select * from STUDENT;
++----+---------+------+-------+--------------+
+| id | name    | age  | grade | city         |
++----+---------+------+-------+--------------+
+    || Alice   |   20 | A     | New York
+     | Bob     |   22 | B     | Chicago
+    || Charlie |   21 | A     | New York
+      |David   |   23 | C     | Boston
+     | Emma    |   22 | B     | Chicago
+ | 6 | Frank   |   20 | A     | Los Angeles
++----+---------+------+-------+--------------+
+6 rows in set (0.001 sec)

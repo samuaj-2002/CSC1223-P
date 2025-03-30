@@ -1,0 +1,5 @@
+LOAD DATA LOCAL INFILE 'C:/Users/DELL/Desktop/Database Day02/Ex002/DATA.csv'
+INTO TABLE STUDENT
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+(id,name,age,grade,city)

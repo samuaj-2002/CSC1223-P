@@ -1,0 +1,132 @@
+mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uov                |
++--------------------+
+6 rows in set (0.002 sec)
+
+MariaDB [(none)]> use UOV;
+Database changed
+MariaDB [UOV]> create Patient(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20)
+    -> create Patient(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20),Phone CHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Patient(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20)
+create...' at line 1
+MariaDB [UOV]> create table Patient(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20),Phone CHAR(10));
+ERROR 1050 (42S01): Table 'patient' already exists
+MariaDB [UOV]> create table patient(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20),Phone CHAR(10));
+ERROR 1050 (42S01): Table 'patient' already exists
+MariaDB [UOV]> create table Patient1(PatientId int Primary key,Name VARCHAR(30),Address VARCHAR(20),Phone CHAR(10));
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [UOV]> DESC Patient1;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| PatientId | int(11)     | NO   | PRI | NULL    |       |
+| Name      | varchar(30) | YES  |     | NULL    |       |
+| Address   | varchar(20) | YES  |     | NULL    |       |
+| Phone     | char(10)    | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.025 sec)
+
+MariaDB [UOV]> INSERT INTO Patient1 VALUES(10000001,'John Smith','42 Floorbar Lane','555-0256');
+Query OK, 1 row affected (0.065 sec)
+
+MariaDB [UOV]> INSERT INTO Patient1 VALUES(10000002,'Grace Ritchie','37 Sanfu Drive','555-0512');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [UOV]> INSERT INTO Patient1 VALUES(10000003,'Todd Quinelan','110 omgbbq Street','555-1204');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [UOV]> INSERT INTO Patient1 VALUES(10000004,'Denis Doe','1101 Foobaz Avenue','555-2048');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [UOV]> select * form Patient1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'form Patient1' at line 1
+MariaDB [UOV]> select * form Patient1
+    -> select * from Patient1
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'form Patient1
+select * from Patient1' at line 1
+MariaDB [UOV]> SELECT*from Patient1
+    -> ;
++-----------+---------------+--------------------+----------+
+| PatientId | Name          | Address            | Phone    |
++-----------+---------------+--------------------+----------+
+|  10000001 | John Smith    | 42 Floorbar Lane   | 555-0256 |
+|  10000002 | Grace Ritchie | 37 Sanfu Drive     | 555-0512 |
+|  10000003 | Todd Quinelan | 110 omgbbq Street  | 555-1204 |
+|  10000004 | Denis Doe     | 1101 Foobaz Avenue | 555-2048 |
++-----------+---------------+--------------------+----------+
+4 rows in set (0.001 sec)
+
+MariaDB [UOV]> create table Teacher(name VARCHAR(90));
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [UOV]> show tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| doctor        |
+| doctors       |
+| doctors1      |
+| patient       |
+| patient1      |
+| physician     |
+| students      |
+| teacher       |
++---------------+
+8 rows in set (0.002 sec)
+
+MariaDB [UOV]> INSERT INTO Teacher VALUES('Nimal');
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [UOV]> select * from Teacher;
++-------+
+| name  |
++-------+
+| Nimal |
++-------+
+1 row in set (0.001 sec)
+
+MariaDB [UOV]> TRUNCATE table Teacher;
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [UOV]> select * from Teacher;
+Empty set (0.001 sec)
+
+MariaDB [UOV]> DROP table Teacher;
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [UOV]> show tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| doctor        |
+| doctors       |
+| doctors1      |
+| patient       |
+| patient1      |
+| physician     |
+| students      |
++---------------+
+7 rows in set (0.002 sec)
+
+MariaDB [UOV]>
